@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import UserTable from './UserListTable';
-import UserApiData from './UserApiData';
+import { UserListApiData } from './UserApiData';
 import Modal from '@/components/Modal';
 import UserDetailSection from './UserDetailSection';
 
@@ -25,7 +25,7 @@ function DisplayUser() {
             <div className="shadow-2xl w-[1000px] mt-8 p-8 rounded-lg">
                 <div>
                     <div className="flex justify-center font-bold text-gray-700 text-4xl pb-5">List of Users</div>
-                    <UserApiData setUserList={setUserList} />
+                    <UserListApiData setUserList={setUserList} />
                     {userList.length > 0 ? (
                         <UserTable userList={userList} userDetailCallback={openModalClient} />
                     ) : (

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { get } from  '@/axios/axios.js'
 
-const UserApiData = ({ setUserList }) => {
+export const UserListApiData = ({ setUserList }) => {
     useEffect(() => {
         fetchData();
     }, []);
@@ -23,5 +23,3 @@ const UserApiData = ({ setUserList }) => {
 
     return null;
 };
-
-export default UserApiData;
