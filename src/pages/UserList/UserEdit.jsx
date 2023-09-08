@@ -8,8 +8,7 @@ import { get, put } from '@/axios/axios.js';
 const UserEdit = () => {
    const { id } = useParams();
 
-   // Mantén una copia del objeto user original
-   const [originalUser, setOriginalUser] = useState({
+   const [user, setUser] = useState({
       firstName: '',
       lastName: '',
       email: '',
@@ -28,13 +27,10 @@ const UserEdit = () => {
    useEffect(() => {
       get(`users/${id}`)
          .then((response) => {
-         // Almacena el usuario original en originalUser
-         setOriginalUser(response);
-
-         // Establece los valores del formulario solo para las propiedades específicas
-         setValue('firstName', response.firstName);
-         setValue('lastName', response.lastName);
-         setValue('email', response.email);
+            setUser(response);
+            setValue('firstName', response.firstName);
+            setValue('lastName', response.lastName);
+            setValue('email', response.email);
          })
          .catch((error) => {
          console.log(error);
@@ -44,9 +40,9 @@ const UserEdit = () => {
    const navigate = useNavigate();
 
    const submitData = (formData) => {
-      // Combina las propiedades actualizadas con las propiedades originales
+      
       const updatedUser = {
-         ...originalUser,
+         ...user,
          ...formData,
       };
 
